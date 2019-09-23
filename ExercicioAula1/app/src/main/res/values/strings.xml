@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ExercicioAula1</string>
+    <string name="textoCenter">Texto Center</string>
+    <string name="textoCenterLeft">Texto Center/left</string>
+    <string name="textoBotom">Texto Botom/right</string>
+    <string name="left">/left</string>
+    <string name="right">/right</string>
+    <string name="top">/top!</string>
+
+</resources>
