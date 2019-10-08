@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".view.activitys.ProfileActivity"></activity>
-        <activity android:name=".view.activitys.DetalhesDoPratoActivity" />
+        <activity android:name=".view.activitys.DetalhesDoPratoActivity"
+            android:theme="@style/AppThemeLight"/>
         <activity android:name=".view.activitys.RestauranteActivity" />
         <activity
             android:name=".view.activitys.RegistroActivity"
