@@ -1,6 +1,7 @@
 package com.example.primeiroentregavelandroid.view.activitys;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -33,10 +34,10 @@ public class RestauranteActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         //Definição do layout da lista utilizando a classe LayoutManager
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        //LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
 
         recyclerView.setLayoutManager(layoutManager);
     }

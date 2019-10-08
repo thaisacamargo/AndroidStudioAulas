@@ -34,6 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Digital House Foods");
     }
@@ -48,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this, RegistroActivity.class));
+                startActivity(new Intent(LoginActivity.this, DetalhesDoPratoActivity.class));
             }
         });
 
