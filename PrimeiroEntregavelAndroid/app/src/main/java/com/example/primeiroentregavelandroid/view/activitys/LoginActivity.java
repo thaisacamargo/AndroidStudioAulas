@@ -2,6 +2,7 @@ package com.example.primeiroentregavelandroid.view.activitys;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -31,25 +32,25 @@ public class LoginActivity extends AppCompatActivity {
     public static final String EMAIL_KEY = "email";
     public static final String SENHA_KEY = "senha";
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Digital House Foods");
-    }
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        toolbar = findViewById(R.id.toolbar_login);
+        toolbar.setTitle("Digital House Foods");
+        toolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
+        toolbar.setTitleMarginStart(8);
+        setSupportActionBar(toolbar);
+
         initViews();
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this, RestauranteActivity.class));
+                startActivity(new Intent(LoginActivity.this, RegistroActivity.class));
             }
         });
 

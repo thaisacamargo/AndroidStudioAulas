@@ -7,6 +7,15 @@
     android:background="@color/white"
     tools:context=".view.activitys.LoginActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_email_login"
         android:layout_width="match_parent"
@@ -16,7 +25,7 @@
         android:layout_marginTop="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_login">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tiedit_login_email"
@@ -26,10 +35,10 @@
             android:hint="@string/email_login"
             android:inputType="textEmailAddress"
             android:lines="1"
-            android:textColor="@color/colorPrimary"
-            android:textSize="14sp"
+            android:maxLines="1"
             android:nextFocusDown="@id/til_password_login"
-            android:maxLines="1" />
+            android:textColor="@color/colorPrimary"
+            android:textSize="14sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout

@@ -1,5 +1,6 @@
 package com.example.primeiroentregavelandroid.adapter;
 
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.primeiroentregavelandroid.R;
+import com.example.primeiroentregavelandroid.interfaces.RecyclerClickHome;
 import com.example.primeiroentregavelandroid.model.ModelRestauranteHome;
 
 import java.util.List;
@@ -17,9 +19,11 @@ import java.util.List;
 public class HomeAdapter  extends RecyclerView.Adapter<HomeAdapter.ViewHolderHome> {
 
     private List<ModelRestauranteHome> restaurantes;
+    private RecyclerClickHome recyclerClick;
 
-    public HomeAdapter(List<ModelRestauranteHome> restaurantes) {
+    public HomeAdapter(List<ModelRestauranteHome> restaurantes, RecyclerClickHome recyclerClick) {
         this.restaurantes = restaurantes;
+        this.recyclerClick = recyclerClick;
     }
 
     @NonNull
@@ -30,10 +34,17 @@ public class HomeAdapter  extends RecyclerView.Adapter<HomeAdapter.ViewHolderHom
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolderHome viewHolderRestaurante, int i) {
-        ModelRestauranteHome restaurante = restaurantes.get(i);
+    public void onBindViewHolder(@NonNull ViewHolderHome viewHolderHome, int i) {
+        final ModelRestauranteHome restaurante = restaurantes.get(i);
 
-        viewHolderRestaurante.bind(restaurante);
+        viewHolderHome.bind(restaurante);
+
+        viewHolderHome.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                recyclerClick.onclick(restaurante);
+            }
+        });
 
     }
 
@@ -43,10 +54,10 @@ public class HomeAdapter  extends RecyclerView.Adapter<HomeAdapter.ViewHolderHom
     }
 
     public class ViewHolderHome extends RecyclerView.ViewHolder {
-        ImageView imgRestaurante;
-        TextView txtNomeRestaurante;
-        TextView txtEnderecoRestaurante;
-        TextView txtHorariosFuncionamento;
+        private ImageView imgRestaurante;
+        private  TextView txtNomeRestaurante;
+        private TextView txtEnderecoRestaurante;
+        private TextView txtHorariosFuncionamento;
 
         public ViewHolderHome(@NonNull View itemView) {
             super(itemView);
@@ -59,10 +70,11 @@ public class HomeAdapter  extends RecyclerView.Adapter<HomeAdapter.ViewHolderHom
 
 
         public void bind(ModelRestauranteHome restauranteHome){
+            Drawable drawable = itemView.getResources().getDrawable(restauranteHome.getImgRestaurante());
             txtNomeRestaurante.setText(restauranteHome.getTxtNomeRestaurante());
             txtEnderecoRestaurante.setText(restauranteHome.getTxtEnderecoRestaurante());
             txtHorariosFuncionamento.setText(restauranteHome.getTxtHorariosFuncionamento());
-           // imgRestaurante.setImageDrawable(restauranteHome.getImgRestaurante());
+            imgRestaurante.setImageDrawable(drawable);
         }
 
 

@@ -1,5 +1,6 @@
 package com.example.primeiroentregavelandroid.adapter;
 
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.primeiroentregavelandroid.R;
+import com.example.primeiroentregavelandroid.interfaces.RecycleClickRestaurante;
 import com.example.primeiroentregavelandroid.model.ModelRestauranteDetalhado;
 import com.example.primeiroentregavelandroid.model.ModelRestauranteHome;
 
@@ -18,9 +20,11 @@ import java.util.List;
 public class RestauranteAdapter extends RecyclerView.Adapter<RestauranteAdapter.ViewHolderRestaurante> {
 
     private List<ModelRestauranteDetalhado> pratos;
+    private RecycleClickRestaurante recyclerClick;
 
-    public RestauranteAdapter(List<ModelRestauranteDetalhado> pratos) {
+    public RestauranteAdapter(List<ModelRestauranteDetalhado> pratos, RecycleClickRestaurante recyclerClick) {
         this.pratos = pratos;
+        this.recyclerClick = recyclerClick;
     }
 
     @NonNull
@@ -32,9 +36,16 @@ public class RestauranteAdapter extends RecyclerView.Adapter<RestauranteAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull RestauranteAdapter.ViewHolderRestaurante viewHolderRestaurante, int i) {
-        ModelRestauranteDetalhado prato = pratos.get(i);
+        final ModelRestauranteDetalhado prato = pratos.get(i);
 
         viewHolderRestaurante.bind(prato);
+
+        viewHolderRestaurante.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                recyclerClick.onclick(prato);
+            }
+        });
 
     }
 
@@ -55,9 +66,10 @@ public class RestauranteAdapter extends RecyclerView.Adapter<RestauranteAdapter.
         }
 
 
-        public void bind(ModelRestauranteDetalhado restaurante){
-            txtNomePrato.setText(restaurante.getNomePRato());
-           // imgPrato.setImageDrawable(restaurante.getImgPrato());
+        public void bind(ModelRestauranteDetalhado prato){
+            Drawable drawable = itemView.getResources().getDrawable(prato.getImgPrato());
+            txtNomePrato.setText(prato.getNomePRato());
+            imgPrato.setImageDrawable(drawable);
 
         }
 
