@@ -6,6 +6,8 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import com.example.primeiroentregavelandroid.R;
 
@@ -14,6 +16,8 @@ import java.security.PrivateKey;
 public class ProfileActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
+    private Button btnSalvar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +25,14 @@ public class ProfileActivity extends AppCompatActivity {
 
         setupToolbar();
 
+        initViews();
+
+        setupViewsClick();
+
+    }
+
+    private void initViews(){
+        btnSalvar = findViewById(R.id.btn_salvar);
     }
 
     private void setupToolbar(){
@@ -29,6 +41,15 @@ public class ProfileActivity extends AppCompatActivity {
         toolbar.setTitle("Profile");
         toolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
         setSupportActionBar(toolbar);
+    }
+
+    private void setupViewsClick(){
+        btnSalvar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     @Override
