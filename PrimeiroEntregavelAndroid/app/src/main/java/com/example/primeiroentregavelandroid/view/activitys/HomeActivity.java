@@ -62,9 +62,11 @@ public class HomeActivity extends AppCompatActivity implements RecyclerClickHome
     private List<ModelRestauranteHome> listaRestaurante(){
         List<ModelRestauranteHome> restaurantes = new ArrayList<>();
 
-        restaurantes.add(new ModelRestauranteHome(R.drawable.churras,"Churrascaria 1","Av. Magalhães de Castro, 4800", "Fecha às 22:30"));
-        restaurantes.add(new ModelRestauranteHome(R.drawable.churras,"Churrascaria 2","Av. Magalhães de Castro, 4800", "Fecha às 22:30"));
-        restaurantes.add(new ModelRestauranteHome(R.drawable.churras,"Churrascaria 3","Av. Magalhães de Castro, 4800", "Fecha às 22:30"));
+        restaurantes.add(new ModelRestauranteHome(R.mipmap.restaurante1,"Tony Roma's","Av. Lavandisca, 717 - Indianópolis, São Paulo", "Fecha às 22:00"));
+        restaurantes.add(new ModelRestauranteHome(R.mipmap.restaurante2,"Aoyama - Moema","Alameda dos Arapanés, 532 - Moema", "Fecha às 00:00"));
+        restaurantes.add(new ModelRestauranteHome(R.mipmap.restaurante3,"Outback - Moema","Av. Moaci, 187, 187 - Moema, São Paulo", "Fecha às 00:00"));
+        restaurantes.add(new ModelRestauranteHome(R.mipmap.restaurante4,"Sí Señor!","Alameda Jauaperi, 626 - Moema", "Fecha às 01:00"));
+
 
         return restaurantes;
     }

@@ -89,9 +89,17 @@ public class RestauranteActivity extends AppCompatActivity  implements RecycleCl
     private List<ModelRestauranteDetalhado> listaPratos(){
         List<ModelRestauranteDetalhado> pratos = new ArrayList<>();
 
-        pratos.add(new ModelRestauranteDetalhado(R.drawable.churras,"TESTE 1"));
-        pratos.add(new ModelRestauranteDetalhado(R.drawable.churras,"Churrasquinho 2"));
-        pratos.add(new ModelRestauranteDetalhado(R.drawable.churras,"Churrasquinho 3"));
+        pratos.add(new ModelRestauranteDetalhado(R.mipmap.prato,"Salada com molho Gengibre "));
+        pratos.add(new ModelRestauranteDetalhado(R.mipmap.prato,"Salada com molho Gengibre "));
+        pratos.add(new ModelRestauranteDetalhado(R.mipmap.prato,"Salada com molho Gengibre "));
+        pratos.add(new ModelRestauranteDetalhado(R.mipmap.prato,"Salada com molho Gengibre "));
+        pratos.add(new ModelRestauranteDetalhado(R.mipmap.prato,"Salada com molho Gengibre "));
+        pratos.add(new ModelRestauranteDetalhado(R.mipmap.prato,"Salada com molho Gengibre "));
+        pratos.add(new ModelRestauranteDetalhado(R.mipmap.prato,"Salada com molho Gengibre "));
+        pratos.add(new ModelRestauranteDetalhado(R.mipmap.prato,"Salada com molho Gengibre "));
+        pratos.add(new ModelRestauranteDetalhado(R.mipmap.prato,"Salada com molho Gengibre "));
+        pratos.add(new ModelRestauranteDetalhado(R.mipmap.prato,"Salada com molho Gengibre "));
+
 
         return pratos;
     }
