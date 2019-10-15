@@ -19,12 +19,16 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        setupToolbar();
+
+    }
+
+    private void setupToolbar(){
         toolbar = findViewById(R.id.toolbar_profile);
         toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_arrow_back_white_24dp));
         toolbar.setTitle("Profile");
         toolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
         setSupportActionBar(toolbar);
-
     }
 
     @Override

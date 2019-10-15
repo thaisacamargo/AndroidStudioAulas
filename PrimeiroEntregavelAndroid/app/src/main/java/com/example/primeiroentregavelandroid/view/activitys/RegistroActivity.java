@@ -23,14 +23,22 @@ public class RegistroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
 
+       setupToolbar();
+
+        initViews();
+
+
+    }
+
+    private void setupToolbar(){
         toolbar = findViewById(R.id.toolbar_register);
         toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_arrow_back_white_24dp));
         toolbar.setTitle("Registro");
         toolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
         setSupportActionBar(toolbar);
+    }
 
-        initViews();
-
+    private void setupViewsClicks(){
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

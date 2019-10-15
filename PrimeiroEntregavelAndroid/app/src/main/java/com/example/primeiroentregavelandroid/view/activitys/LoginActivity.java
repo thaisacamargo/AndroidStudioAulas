@@ -39,14 +39,29 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        setupToolbar();
+
+        initViews();
+
+        setupViewsClicks();
+    }
+
+    private void initViews(){
+        inputEmail = findViewById(R.id.til_email_login);
+        inputSenha = findViewById(R.id.til_password_login);
+        btnLogin = findViewById(R.id.btn_login);
+        btnRegister = findViewById(R.id.btn_register);
+    }
+
+    private void setupToolbar(){
         toolbar = findViewById(R.id.toolbar_login);
         toolbar.setTitle("Digital House Foods");
         toolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
         toolbar.setTitleMarginStart(8);
         setSupportActionBar(toolbar);
+    }
 
-        initViews();
-
+    private void setupViewsClicks(){
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,14 +76,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-
-    }
-
-    private void initViews(){
-        inputEmail = findViewById(R.id.til_email_login);
-        inputSenha = findViewById(R.id.til_password_login);
-        btnLogin = findViewById(R.id.btn_login);
-        btnRegister = findViewById(R.id.btn_register);
     }
 
     public void validarCampos(){

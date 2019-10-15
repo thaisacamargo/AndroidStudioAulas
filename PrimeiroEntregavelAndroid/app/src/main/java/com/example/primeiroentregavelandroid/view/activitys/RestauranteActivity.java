@@ -30,7 +30,7 @@ public class RestauranteActivity extends AppCompatActivity  implements RecycleCl
 
     private RecyclerView recyclerView;
     private RestauranteAdapter adapter;
-
+    private List<ModelRestauranteDetalhado> pratos = new ArrayList<>();
     private ImageView imagemRestaurante;
     private TextView nome;
     public static final String RESTAURNTE_KEY = "restaurante";
@@ -43,66 +43,56 @@ public class RestauranteActivity extends AppCompatActivity  implements RecycleCl
 
         initViews();
 
+        setupToolbar();
 
-    //Toolbar
+        recebendoDados();
+
+
+    }
+
+
+    private void initViews(){
+        imagemRestaurante = findViewById(R.id.image_restaurante);
+        nome = findViewById(R.id.text_restaurante_nome);
+    }
+
+    private void setupToolbar(){
+        //Toolbar
         toolbar = findViewById(R.id.toolbar_restaurante);
         toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_arrow_back_white_24dp));
         toolbar.setTitle(" ");
         setSupportActionBar(toolbar);
 
+    }
 
-    //Comunicação
-        if (getIntent() != null && getIntent().getExtras() != null){
-
+    private void recebendoDados(){
+        if (getIntent() != null) {
             ModelRestauranteHome restaurante = getIntent().getExtras().getParcelable(RESTAURNTE_KEY);
 
-            Drawable drawable = getResources().getDrawable(restaurante.getImgRestaurante());
-            imagemRestaurante.setImageDrawable(drawable);
-            nome.setText(restaurante.getTxtNomeRestaurante());
+            if (restaurante != null){
 
+                Drawable drawable = getResources().getDrawable(restaurante.getImgRestaurante());
+                imagemRestaurante.setImageDrawable(drawable);
+                nome.setText(restaurante.getTxtNomeRestaurante());
+                pratos = restaurante.getPratos();
+
+                setupRecycler();
+
+            }
         }
 
+    }
 
-    //RecyclerView e Adapter
+    private  void setupRecycler(){
+        //RecyclerView e Adapter
         recyclerView = findViewById(R.id.recyclerView_restaurante);
-
-        adapter = new RestauranteAdapter(listaPratos(),this);
-
-        //Setando o adapter para o componente recyclerView
-        recyclerView.setAdapter(adapter);
-
-        //Definição do layout da lista utilizando a classe LayoutManager
-
+        adapter = new RestauranteAdapter(pratos, this);
         GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
-
-        //LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-
+        recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(layoutManager);
-    }
-
-    private void initViews(){
-        imagemRestaurante = findViewById(R.id.image_restaurante);
-        nome = findViewById(R.id.text_restaurante_nome);
 
     }
 
-    private List<ModelRestauranteDetalhado> listaPratos(){
-        List<ModelRestauranteDetalhado> pratos = new ArrayList<>();
-
-        pratos.add(new ModelRestauranteDetalhado(R.mipmap.prato,"Salada com molho Gengibre "));
-        pratos.add(new ModelRestauranteDetalhado(R.mipmap.prato,"Salada com molho Gengibre "));
-        pratos.add(new ModelRestauranteDetalhado(R.mipmap.prato,"Salada com molho Gengibre "));
-        pratos.add(new ModelRestauranteDetalhado(R.mipmap.prato,"Salada com molho Gengibre "));
-        pratos.add(new ModelRestauranteDetalhado(R.mipmap.prato,"Salada com molho Gengibre "));
-        pratos.add(new ModelRestauranteDetalhado(R.mipmap.prato,"Salada com molho Gengibre "));
-        pratos.add(new ModelRestauranteDetalhado(R.mipmap.prato,"Salada com molho Gengibre "));
-        pratos.add(new ModelRestauranteDetalhado(R.mipmap.prato,"Salada com molho Gengibre "));
-        pratos.add(new ModelRestauranteDetalhado(R.mipmap.prato,"Salada com molho Gengibre "));
-        pratos.add(new ModelRestauranteDetalhado(R.mipmap.prato,"Salada com molho Gengibre "));
-
-
-        return pratos;
-    }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

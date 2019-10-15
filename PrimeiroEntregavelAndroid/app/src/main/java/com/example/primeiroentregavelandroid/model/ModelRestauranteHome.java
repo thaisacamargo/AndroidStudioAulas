@@ -5,26 +5,32 @@ import android.os.Parcelable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.List;
+
 public class ModelRestauranteHome implements Parcelable {
 
     private int imgRestaurante;
     private String txtNomeRestaurante;
     private String txtEnderecoRestaurante;
     private String txtHorariosFuncionamento;
+    private List<ModelRestauranteDetalhado> pratos;
 
 
-    public ModelRestauranteHome(int imgRestaurante, String txtNomeRestaurante, String txtEnderecoRestaurante, String txtHorariosFuncionamento) {
+    public ModelRestauranteHome(int imgRestaurante, String txtNomeRestaurante, String txtEnderecoRestaurante, String txtHorariosFuncionamento, List<ModelRestauranteDetalhado> pratos) {
         this.imgRestaurante = imgRestaurante;
         this.txtNomeRestaurante = txtNomeRestaurante;
         this.txtEnderecoRestaurante = txtEnderecoRestaurante;
         this.txtHorariosFuncionamento = txtHorariosFuncionamento;
+        this.pratos = pratos;
     }
+
 
     protected ModelRestauranteHome(Parcel in) {
         imgRestaurante = in.readInt();
         txtNomeRestaurante = in.readString();
         txtEnderecoRestaurante = in.readString();
         txtHorariosFuncionamento = in.readString();
+        pratos = in.createTypedArrayList(ModelRestauranteDetalhado.CREATOR);
     }
 
     public static final Creator<ModelRestauranteHome> CREATOR = new Creator<ModelRestauranteHome>() {
@@ -71,6 +77,14 @@ public class ModelRestauranteHome implements Parcelable {
         this.txtHorariosFuncionamento = txtHorariosFuncionamento;
     }
 
+    public List<ModelRestauranteDetalhado> getPratos() {
+        return pratos;
+    }
+
+    public void setPratos(List<ModelRestauranteDetalhado> pratos) {
+        this.pratos = pratos;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -82,5 +96,6 @@ public class ModelRestauranteHome implements Parcelable {
         dest.writeString(txtNomeRestaurante);
         dest.writeString(txtEnderecoRestaurante);
         dest.writeString(txtHorariosFuncionamento);
+        dest.writeTypedList(pratos);
     }
 }

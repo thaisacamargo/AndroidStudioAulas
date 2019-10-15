@@ -21,6 +21,7 @@ public class DetalhesDoPratoActivity extends AppCompatActivity {
 
     private ImageView imagemPrato;
     private TextView nomePrato;
+    private TextView descricaoPrato;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,32 +30,43 @@ public class DetalhesDoPratoActivity extends AppCompatActivity {
 
         initViews();
 
-        toolbar = findViewById(R.id.toolbar_prato);
-        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_arrow_back_white_24dp));
-        toolbar.setTitle(" ");
-        setSupportActionBar(toolbar);
+        setupToolbar();
 
-        //Comunicação
-        if (getIntent() != null && getIntent().getExtras() != null){
-
-            ModelRestauranteDetalhado prato = getIntent().getExtras().getParcelable(DETALHES_KEY);
-
-            Drawable drawable = getResources().getDrawable(prato.getImgPrato());
-            imagemPrato.setImageDrawable(drawable);
-            nomePrato.setText(prato.getNomePRato());
-
-        }
-
+        recebendoDados();
 
     }
 
     private void initViews(){
-        imagemPrato = findViewById(R.id.img_prato);
-        nomePrato = findViewById(R.id.txt_nome_prato);
+        imagemPrato = findViewById(R.id.img_detalhe_prato);
+        nomePrato = findViewById(R.id.text_prato_nome);
+        descricaoPrato = findViewById(R.id.txtDetalhePrato);
     }
+
+    private void recebendoDados() {
+        //Comunicação
+        if (getIntent() != null) {
+            ModelRestauranteDetalhado pratos = getIntent().getExtras().getParcelable(DETALHES_KEY);
+            if (pratos != null) {
+                Drawable drawable = getResources().getDrawable(pratos.getImgPrato());
+                imagemPrato.setImageDrawable(drawable);
+                nomePrato.setText(pratos.getNomePRato());
+                descricaoPrato.setText(pratos.getDescricaoPrato());
+            }
+        }
+    }
+
+
+    private  void setupToolbar(){
+        //Configurações toolbar
+        toolbar = findViewById(R.id.toolbar_prato);
+        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_arrow_back_white_24dp));
+        toolbar.setTitle(" ");
+        setSupportActionBar(toolbar);
+    }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
+        //Botão back
         if (item.getItemId() == android.R.id.home) {
             finish();
         }

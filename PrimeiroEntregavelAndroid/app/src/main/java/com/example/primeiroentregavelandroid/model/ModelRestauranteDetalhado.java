@@ -8,15 +8,18 @@ public class ModelRestauranteDetalhado implements Parcelable {
 
     private int imgPrato;
     private String nomePRato;
+    private String descricaoPrato;
 
-    public ModelRestauranteDetalhado(int imgPrato, String nomePRato) {
+    public ModelRestauranteDetalhado(int imgPrato, String nomePRato, String descricaoPrato) {
         this.imgPrato = imgPrato;
         this.nomePRato = nomePRato;
+        this.descricaoPrato = descricaoPrato;
     }
 
     protected ModelRestauranteDetalhado(Parcel in) {
         imgPrato = in.readInt();
         nomePRato = in.readString();
+        descricaoPrato = in.readString();
     }
 
     public static final Creator<ModelRestauranteDetalhado> CREATOR = new Creator<ModelRestauranteDetalhado>() {
@@ -47,6 +50,14 @@ public class ModelRestauranteDetalhado implements Parcelable {
         this.nomePRato = nomePRato;
     }
 
+    public String getDescricaoPrato() {
+        return descricaoPrato;
+    }
+
+    public void setDescricaoPrato(String descricaoPrato) {
+        this.descricaoPrato = descricaoPrato;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -56,5 +67,6 @@ public class ModelRestauranteDetalhado implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(imgPrato);
         dest.writeString(nomePRato);
+        dest.writeString(descricaoPrato);
     }
 }
